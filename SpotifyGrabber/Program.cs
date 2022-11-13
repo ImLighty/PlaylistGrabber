@@ -25,8 +25,11 @@ class Program
             string json = r.ReadToEnd();
             // Read the json file and get the client secret and client ID
             dynamic array = JsonConvert.DeserializeObject(json);
+            if (array == null) return 1;
             client_id = array.client_id;
+            if (client_id == null) return 1;
             client_secret = array.client_secret;
+            if (client_secret == null) return 1;
         }
         
         var GrabberSpotifyConfig = SpotifyClientConfig
